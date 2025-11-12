@@ -1,0 +1,119 @@
+/* Design Tokens */
+:root {
+  /* Colors - Space Theme */
+  --color-space-dark: #0a0e27;
+  --color-mars-red: #cd5c5c;
+  --color-mars-orange: #ff6b35;
+  --color-accent: #00d9ff;
+
+  /* Typography */
+  --font-main: "Space Mono", monospace;
+  --font-size-huge: clamp(4rem, 15vw, 12rem);
+
+  /* Spacing */
+  --space-md: 2rem;
+
+  /* Animation */
+  --transition-normal: 0.3s ease;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/*scrollytelling css*/
+:root {
+  --p: 0;
+  --scale: calc(1 + var(--p) * 3);
+  --starShift: calc(var(--p) * 200px);
+  --blur: calc((1 - var(--p)) * 6px);
+  --bg: radial-gradient(ellipse at 50% 60%, #0b1a2a, #04070d 60%);
+}
+
+body {
+  margin: 0;
+  background: #000;
+  color: white;
+  font-family: system-ui, sans-serif;
+}
+
+.landing {
+  height: 350vh;
+  position: relative;
+  background: var(--bg);
+}
+
+.scene {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+      2px 2px at 20% 30%,
+      #fff 0 60%,
+      transparent 61%
+    ),
+    radial-gradient(1.5px 1.5px at 60% 70%, #cfe6ff 0 60%, transparent 61%),
+    radial-gradient(1.2px 1.2px at 80% 20%, #fff 0 60%, transparent 61%),
+    radial-gradient(1.5px 1.5px at 40% 50%, #bcd3ff 0 60%, transparent 61%);
+  background-repeat: repeat;
+  background-size: 300px 300px, 250px 250px, 220px 220px, 260px 260px;
+  transform: translateY(calc(var(--starShift) * -1));
+  filter: blur(var(--blur));
+}
+
+.mars {
+  position: absolute;
+  width: min(60vmin, 50vw);
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%) scale(var(--scale));
+  transform-origin: center center;
+  filter: drop-shadow(0 0 20px rgba(255, 140, 50, 0.5));
+}
+
+.hud {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: start center;
+  padding-top: 6vh;
+  text-align: center;
+  color: #e9f1ff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+h1 {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.5rem;
+}
+.step {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin: 0.2rem 0;
+}
+.step-1 {
+  opacity: calc(clamp(0, (var(--p) - 0.05) * 8, 1));
+}
+.step-2 {
+  opacity: calc(clamp(0, (var(--p) - 0.25) * 8, 1));
+}
+.step-3 {
+  opacity: calc(clamp(0, (var(--p) - 0.5) * 8, 1));
+}
+.step-4 {
+  opacity: calc(clamp(0, (var(--p) - 0.75) * 8, 1));
+}
