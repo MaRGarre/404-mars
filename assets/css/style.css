@@ -33,7 +33,7 @@
   --p: 0;
   --scale: calc(1 + var(--p) * 3);
   --starShift: calc(var(--p) * 200px);
-  --blur: calc((1 - var(--p)) * 6px);
+  --blur: calc((1 - var(--p)) * 1px);
   --bg: radial-gradient(ellipse at 50% 60%, #0b1a2a, #04070d 60%);
 }
 
@@ -78,11 +78,10 @@ body {
 .mars {
   position: absolute;
   width: min(60vmin, 50vw);
-  left: 35%;
+  left: 55%;
   top: 50%;
   transform: translate(-50%, -50%);
   transform-origin: center center;
-  filter: drop-shadow(0 0 20px rgba(255, 140, 50, 0.5));
 }
 
 .hud {
