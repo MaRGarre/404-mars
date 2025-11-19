@@ -78,10 +78,10 @@ body {
 .mars {
   position: absolute;
   width: min(60vmin, 50vw);
-  right: -800px;
-  top: 55%;
-  transform: translateY(-50%);
-  transform-origin: right right;
+  left: 35%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
   filter: drop-shadow(0 0 20px rgba(255, 140, 50, 0.5));
 }
 

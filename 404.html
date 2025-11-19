@@ -11,7 +11,7 @@
       <section class="landing">
         <div class="scene">
           <div class="stars"></div>
-          <img class="mars" src="assets/img/1000043523.png" alt="Mars" />
+          <img class="mars" src="assets/img/404 marte copia.png" alt="Mars" />
           <div class="hud">
             <h1>Approaching Mars…</h1>
             <p class="step step-1">T-30s to atmospheric entry</p>
@@ -28,7 +28,8 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
     gsap.to(".mars", {
-      x: -3000,
+      scale: 20,
+      filter: "blur(0px)",
       ease: "none",
       scrollTrigger: {
         trigger: ".landing",
