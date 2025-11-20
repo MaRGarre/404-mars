@@ -1,20 +1,20 @@
-/* Design Tokens */
+/* Design Tokens que nos hizo la ia pero no usamos ninguna excepto transition*/
 :root {
   /* Colors - Space Theme */
-  --color-space-dark: #0a0e27;
+  /*--color-space-dark: #0a0e27;
   --color-mars-red: #cd5c5c;
   --color-mars-orange: #ff6b35;
-  --color-accent: #00d9ff;
+  --color-accent: #00d9ff;*/
 
   /* Typography */
-  --font-main: "Space Mono", monospace;
-  --font-size-huge: clamp(4rem, 15vw, 12rem);
+  /*--font-main: "Space Mono", monospace;
+  /*--font-size-huge: clamp(4rem, 15vw, 15vw);
 
   /* Spacing */
-  --space-md: 2rem;
+  /*--space-md: 2rem;
 
   /* Animation */
-  --transition-normal: 0.3s ease;
+  --transition-normal: 0.3s ease-in-out;
 }
 
 /* Floating animation */
@@ -33,7 +33,7 @@
   --p: 0;
   --scale: calc(1 + var(--p) * 3);
   --starShift: calc(var(--p) * 200px);
-  --blur: calc((1 - var(--p)) * 6px);
+  --blur: calc((1 - var(--p)) * 1px);
   --bg: radial-gradient(ellipse at 50% 60%, #0b1a2a, #04070d 60%);
 }
 
@@ -61,28 +61,48 @@ body {
 .stars {
   position: absolute;
   inset: 0;
+  filter: blur(var(--blur));
+  transform: translateY(calc(var(--starShift) * -1));
+
+  /* More layers, more variation */
   background-image: radial-gradient(
-      2px 2px at 20% 30%,
+      1.8px 1.8px at 12% 22%,
       #fff 0 60%,
       transparent 61%
     ),
-    radial-gradient(1.5px 1.5px at 60% 70%, #cfe6ff 0 60%, transparent 61%),
-    radial-gradient(1.2px 1.2px at 80% 20%, #fff 0 60%, transparent 61%),
-    radial-gradient(1.5px 1.5px at 40% 50%, #bcd3ff 0 60%, transparent 61%);
+    radial-gradient(1px 1px at 72% 88%, #cfe6ff 0 60%, transparent 61%),
+    radial-gradient(1.4px 1.4px at 25% 77%, #fff 0 60%, transparent 61%),
+    radial-gradient(1.2px 1.2px at 85% 35%, #bcd3ff 0 60%, transparent 61%),
+    radial-gradient(2px 2px at 40% 10%, #fff 0 60%, transparent 61%),
+    radial-gradient(1.6px 1.6px at 93% 64%, #e8f2ff 0 60%, transparent 61%),
+    radial-gradient(1px 1px at 55% 42%, #fff 0 60%, transparent 61%),
+    radial-gradient(1.3px 1.3px at 10% 90%, #d7e9ff 0 60%, transparent 61%),
+    radial-gradient(1.1px 1.1px at 78% 55%, #fff 0 60%, transparent 61%),
+    radial-gradient(1.7px 1.7px at 32% 63%, #bcd3ff 0 60%, transparent 61%);
+
+  /* Different tile sizes break visible patterns */
+  background-size: 310px 310px, 270px 260px, 280px 250px, 330px 320px,
+    260px 300px, 340px 290px, 300px 280px, 255px 310px, 295px 260px, 320px 270px;
+
   background-repeat: repeat;
-  background-size: 300px 300px, 250px 250px, 220px 220px, 260px 260px;
-  transform: translateY(calc(var(--starShift) * -1));
-  filter: blur(var(--blur));
 }
 
-.mars {
+.tierra {
   position: absolute;
-  width: min(60vmin, 50vw);
-  left: 35%;
+  width: clamp(90vw, 500vw, 80%);
+  left: 55%;
   top: 50%;
   transform: translate(-50%, -50%);
   transform-origin: center center;
-  filter: drop-shadow(0 0 20px rgba(255, 140, 50, 0.5));
+}
+
+.luna {
+  position: absolute;
+  width: clamp(80vw, 400vw, 70%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
 }
 
 .hud {
@@ -95,25 +115,86 @@ body {
   color: #e9f1ff;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
+
 h1 {
-  font-weight: 700;
+  font-weight: clamp(4vw, 5vw, 8vw);
   letter-spacing: 0.04em;
   margin: 0 0 0.5rem;
 }
+
+@keyframes bounce-letter {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.bounce-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: flex;
+  gap: 0.1em;
+}
+
+.bounce-text span {
+  display: inline-block;
+  animation: bounce-letter 1s ease-in-out infinite;
+}
+
+.bounce-text span:nth-child(1) {
+  animation-delay: 0s;
+  color: #ffffff;
+}
+.bounce-text span:nth-child(2) {
+  animation-delay: 0.1s;
+  color: #ffffff;
+}
+.bounce-text span:nth-child(3) {
+  animation-delay: 0.2s;
+  color: #ffffff;
+}
+.bounce-text span:nth-child(4) {
+  animation-delay: 0.3s;
+  color: #ffffff;
+}
+.bounce-text span:nth-child(5) {
+  animation-delay: 0.4s;
+  color: #ffffff;
+}
+.bounce-text span:nth-child(6) {
+  animation-delay: 0.5s;
+  color: #ffffff;
+}
+
 .step {
-  opacity: 0;
+  opacity: 100;
   transition: opacity 0.3s ease;
   margin: 0.2rem 0;
+  position: absolute;
+  width: clamp(90vw, 500vw, 100%);
+  left: 55%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+  place-items: start center;
 }
 .step-1 {
-  opacity: calc(clamp(0, (var(--p) - 0.05) * 8, 1));
+  opacity: calc(clamp(100, (var(--p) - 0.05) * 8, 1));
 }
 .step-2 {
-  opacity: calc(clamp(0, (var(--p) - 0.25) * 8, 1));
+  opacity: calc(clamp(100, (var(--p) - 0.25) * 8, 1));
+  width: clamp(60vw, 500vw, 90%);
 }
 .step-3 {
-  opacity: calc(clamp(0, (var(--p) - 0.5) * 8, 1));
+  opacity: calc(clamp(100, (var(--p) - 0.5) * 8, 1));
 }
 .step-4 {
-  opacity: calc(clamp(0, (var(--p) - 0.75) * 8, 1));
+  opacity: calc(clamp(100, (var(--p) - 0.75) * 8, 1));
+}
+
+#image1 {
+  place-items: start center;
 }
