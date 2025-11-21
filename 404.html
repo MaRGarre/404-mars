@@ -11,37 +11,75 @@
       <section class="landing">
         <div class="scene">
           <div class="stars"></div>
-          <div class="hud">
-            <div class="bounce-text">
-              <span>B</span>
-              <span>O</span>
-              <span>U</span>
-              <span>N</span>
-              <span>C</span>
-              <span>E</span>
-            </div>
-          </div>
           <div>
             <img
               id="image1"
               src="./assets/img/Estrelladelamuerte.png"
               style="opacity: 0; transition: opacity 0.2s"
             />
-            <audio id="audio1" src="your-music.mp3"></audio>
+            <audio
+              id="audio1"
+              src="./assets/img/audio estrella de la muerte.mp3"
+            ></audio>
           </div>
-          <div class="luna">
+
+          <div class="asteroides1">
             <img
-              class="step step-2"
-              src="assets/img/404 marte copia.png"
-              alt="Mars"
+              class="step step-3"
+              src="./assets/img/asteroides 1.png"
+              alt="tierra"
             />
+          </div>
+          <div class="asteroides2">
+            <img
+              class="step step-4"
+              src="./assets/img/asteroides 2.png"
+              alt="tierra"
+            />
+          </div>
+
+          <div class="luna">
+            <img class="step step-2" src="./assets/img/luna.png" alt="luna" />
           </div>
           <div class="tierra">
             <img
               class="step step-1"
-              src="assets/img/404 marte copia.png"
-              alt="Mars"
+              src="./assets/img/tierra.png"
+              alt="tierra"
             />
+          </div>
+          <div class="centered">
+            <div
+              class="glitch"
+              data-text="404 - Mars Not Found"
+              id="text1"
+              style="opacity: 0; transition: opacity 0.2s"
+            >
+              404 - Mars Not Found
+            </div>
+          </div>
+
+          <div class="hud">
+            <div class="bounce-text">
+              <span>S</span>
+              <span>e</span>
+              <span>a</span>
+              <span>r</span>
+              <span>c</span>
+              <span>h</span>
+              <span>i</span>
+              <span>n</span>
+              <span>g</span>
+              <span> </span>
+              <span> </span>
+              <span>m</span>
+              <span>a</span>
+              <span>r</span>
+              <span>s</span>
+              <span>.</span>
+              <span>.</span>
+              <span>.</span>
+            </div>
           </div>
         </div>
       </section>
@@ -53,25 +91,53 @@
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.to(".tierra", {
-      scale: 30,
+      scale: 2.5,
+      x: "-70vw", // move left
+      y: "60vh", // move down
       filter: "blur(2px)",
       ease: "none",
       scrollTrigger: {
         trigger: ".landing",
         start: "top top",
-        end: "max", // <--- responsive end point
+        end: "max",
         scrub: true,
       },
     });
 
     gsap.to(".luna", {
-      scale: 10,
+      scale: 2,
+      x: "50vw", // move right
+      y: "-50vh", // move up
       filter: "blur(2px)",
       ease: "none",
       scrollTrigger: {
         trigger: ".landing",
         start: "top top",
-        end: "max", // <--- responsive end point
+        end: "max",
+        scrub: true,
+      },
+    });
+
+    gsap.to(".asteroides1", {
+      scale: 1.5,
+      filter: "blur(0.2px)",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".landing",
+        start: "top top",
+        end: "max",
+        scrub: true,
+      },
+    });
+
+    gsap.to(".asteroides2", {
+      scale: 1.25,
+      filter: "blur(0px)",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".landing",
+        start: "top top",
+        end: "max",
         scrub: true,
       },
     });
@@ -79,6 +145,7 @@
     // --- APPEARANCE CODE ---
     const img = document.getElementById("image1");
     const audio = document.getElementById("audio1");
+    const text = document.getElementById("text1");
 
     ScrollTrigger.create({
       trigger: ".landing",
@@ -88,11 +155,14 @@
         img.style.opacity = 0;
         audio.pause();
         audio.currentTime = 0;
+        text.style.opacity = 0;
       },
       onLeave: () => {
         img.style.transition = "opacity 1.5s ease-out";
         img.style.opacity = 1;
         setTimeout(() => audio.play().catch(() => {}), 300);
+        text.style.transition = "opacity 1.5s ease-out";
+        text.style.opacity = 1;
       },
     });
   </script>
